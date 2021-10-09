@@ -101,6 +101,10 @@ class _CurvePainter extends CustomPainter {
     Offset handler = degreesToCoordinates(
         center!, -math.pi / 2 + startAngle + currentAngle + 1.5, radius);
     canvas.drawCircle(handler, appearance.handlerSize, dotPaint);
+    TextSpan span = new TextSpan(style: new TextStyle(color: Color(0xff929FB3)), text: '0%');
+    TextPainter tp = new TextPainter(text: span, textAlign: TextAlign.left);
+    tp.layout();
+    tp.paint(canvas, handler);
   }
 
   drawCircularArc(
