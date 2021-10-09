@@ -102,7 +102,7 @@ class _CurvePainter extends CustomPainter {
         center!, -math.pi / 2 + startAngle + currentAngle + 1.5, radius);
     canvas.drawCircle(handler, appearance.handlerSize, dotPaint);
     TextSpan span = new TextSpan(style: new TextStyle(color: Color(0xff929FB3)), text: '0%');
-    TextPainter tp = new TextPainter(text: span, textAlign: TextAlign.left);
+    TextPainter tp = new TextPainter(text: span, textAlign: TextAlign.left,textDirection: TextDirection.ltr);
     tp.layout();
     tp.paint(canvas, handler);
   }
