@@ -101,10 +101,22 @@ class _CurvePainter extends CustomPainter {
     Offset handler = degreesToCoordinates(
         center!, -math.pi / 2 + startAngle + currentAngle + 1.5, radius);
     canvas.drawCircle(handler, appearance.handlerSize, dotPaint);
-    TextSpan span = new TextSpan(style: new TextStyle(color: Color(0xff929FB3)), text: '0%');
+    int percent = (((currentAngle - startAngle) * 100) / (endAngle - startAngle)).round();
+    TextSpan span = new TextSpan(
+        style: new TextStyle(
+            color: Color(0xff929FB3), fontWeight: FontWeight.bold),
+        text: '$percent%');
     TextPainter tp = new TextPainter(text: span, textAlign: TextAlign.left,textDirection: TextDirection.ltr);
     tp.layout();
     tp.paint(canvas, handler);
+    
+    var innerCirclePaint = Paint()..color = Color(0xff00F2FE);
+
+    Offset start = degreesToCoordinates(
+        center!, -math.pi / 2 + startAngle + 1.5, radius);
+    canvas.drawCircle(handler, 12, dotPaint);
+    canvas.drawCircle(handler, 6, innerCirclePaint);
+
   }
 
   drawCircularArc(
